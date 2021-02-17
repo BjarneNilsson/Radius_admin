@@ -14,7 +14,7 @@
       <TextBlock Text="Vlan:" Margin="63,75,0,0"/>
       <TextBox x:Name="TxtVlan" Margin="100,70,0,0" />
     <Canvas Margin="55,120,0,0">
-      <Button Click="BtnFind_Click" Content="Find" Margin="45,0,0,0" HotKey="F"/>
+      <Button Click="BtnFind_Click" Content="Find" Margin="45,0,0,0" />
       <Button Click="BtnAdd_Click" Content="Add" />
       <Button Click="BtnUpdate_Click" Content="Update" Margin="91,0,0,0"/>
       <Button Click="BtnDelete_Click" Content="Derlete" Margin="158,0,0,0"/>
