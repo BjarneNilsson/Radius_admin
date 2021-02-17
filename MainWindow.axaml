@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication3.MainWindow"
+        Title="Radius Admin">
+
+  <Canvas Margin="0,5,0,0">
+      <TextBlock  Text="Username:" Margin="17,5,0,0" FontSize="16"/>
+     <TextBox x:Name="TxtUsername" Margin="100,0,0,0" Width="200"   />
+      <TextBlock Text="Password:" Margin="29,40,0,0" />
+      <TextBox x:Name="TxtPassword" Margin="100,35,0,0" Width="200" />
+      <TextBlock Text="Vlan:" Margin="63,75,0,0"/>
+      <TextBox x:Name="TxtVlan" Margin="100,70,0,0" />
+    <Canvas Margin="55,120,0,0">
+      <Button Click="BtnFind_Click" Content="Find" Margin="45,0,0,0" HotKey="F"/>
+      <Button Click="BtnAdd_Click" Content="Add" />
+      <Button Click="BtnUpdate_Click" Content="Update" Margin="91,0,0,0"/>
+      <Button Click="BtnDelete_Click" Content="Derlete" Margin="158,0,0,0"/>
+  </Canvas>
+    </Canvas>
+</Window>

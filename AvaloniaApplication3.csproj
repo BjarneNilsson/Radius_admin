@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>AvaloniaApplication3</RootNamespace>
+    <AssemblyName>Radius Admin</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="radclientlib">
+      <HintPath>..\radclientlib_s\radclientlib\bin\Release\netcoreapp3.1\radclientlib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
