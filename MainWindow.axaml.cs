@@ -9,16 +9,16 @@ namespace AvaloniaApplication3
 {
     public class MainWindow : Window
     {
-        
-       
-        
+
+
+#nullable enable
         private static Client Cl;
         public MainWindow()
         {
             InitializeComponent();
-            
-           
-            
+
+
+
             Cl = new Client("https://api.holmedal.net");
             Cl.UserAvalable += (o, e) => {
                 if (e.Vlan.HasValue)
@@ -79,6 +79,6 @@ namespace AvaloniaApplication3
         {
             this.FindControl<TextBox>(Box).Text= Text;
         }
-        public  string Tb(Window Win, string Box) {  return Win.FindControl<TextBox>(Box).Text;  }
+        public  static string Tb(Window Win, string Box) {  return Win.FindControl<TextBox>(Box).Text;  }
     }
 }

@@ -9,6 +9,7 @@ namespace AvaloniaApplication3
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            Name = "Radius Admin"; //set process name ofoe OSX
         }
 
         public override void OnFrameworkInitializationCompleted()

@@ -3,9 +3,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <RootNamespace>AvaloniaApplication3</RootNamespace>
+    <RootNamespace>Radius Admin</RootNamespace>
     <AssemblyName>Radius Admin</AssemblyName>
+    <PackageId>net.holmedal.radius</PackageId>
+    <UseAppHost>true</UseAppHost>
   </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.0" />
     <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
