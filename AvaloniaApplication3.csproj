@@ -7,6 +7,7 @@
     <AssemblyName>Radius Admin</AssemblyName>
     <PackageId>net.holmedal.radius</PackageId>
     <UseAppHost>true</UseAppHost>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   
   <ItemGroup>

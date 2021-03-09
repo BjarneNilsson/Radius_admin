@@ -9,27 +9,29 @@ namespace AvaloniaApplication3
 {
     public class MainWindow : Window
     {
-
-
-#nullable enable
+        public TextBox Username ;
+        public TextBox Password;
+        public TextBox Vlan;
         private static Client Cl;
+
         public MainWindow()
         {
             InitializeComponent();
-
-
-
+            Username = this.FindControl<TextBox>("TxtUsername");
+            Password = this.FindControl<TextBox>("TxtPassword");
+            Vlan = this.FindControl<TextBox>("TxtVlan");
             Cl = new Client("https://api.holmedal.net");
-            Cl.UserAvalable += (o, e) => {
+            Cl.UserAvalable += (o, e) =>
+            {
                 if (e.Vlan.HasValue)
                 {
-                    Tb("TxtVlan", e.Vlan.Value.ToString());
+                    Vlan.Text = e.Vlan.Value.ToString();
                 }
                 else
                 {
-                    Tb("TxtVlan", "");
+                    Vlan.Text = "";
                 }
-                Tb("TxtPassword",e.Password);
+                Password.Text = e.Password;
             };
 #if DEBUG
             this.AttachDevTools();
@@ -39,33 +41,32 @@ namespace AvaloniaApplication3
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-            
-            
-
         }
-        private void BtnFind_Click (object s, RoutedEventArgs a)
+        private void BtnFind_Click(object s, RoutedEventArgs a)
         {
-            Cl.GetUserAsync(Tb(this,"TxtUsername"));
+            Cl.GetUserAsync(Username.Text);
         }
         private void BtnAdd_Click(object s, RoutedEventArgs a)
         {
-            
-            Cl.AddUser(Tb(this,"TxtUsername"), Tb(this,"TxtPassword"),GetVlan(this));
-        }        
-        private void BtnUpdate_Click(object s,RoutedEventArgs a)
+
+            Cl.AddUser(Username.Text, Password.Text, GetVlan(Vlan));
+        }
+        private void BtnUpdate_Click(object s, RoutedEventArgs a)
         {
-            Cl.UpdateUser(Tb(this,"TxtUsername"), Tb(this,"TxtPassword"), GetVlan(this));
+            Cl.UpdateUser(Username.Text, Password.Text, GetVlan(Vlan));
+
 
         }
         private void BtnDelete_Click(Object sender, RoutedEventArgs e)
         {
-            Cl.DeleteUser(Tb(this,"TxtUsername"));
+            Cl.DeleteUser(Username.Text);
         }
-        private static int? GetVlan(Window Win)
+        private static int? GetVlan(TextBox Vla)
+
         {
-            if (Win.FindControl<TextBox>("TxtVlan").Text != " ")
+            if (Vla.Text != " ")
             {
-                var a = int.TryParse(Win.FindControl<TextBox>("TxtVlan").Text, out int Vl);
+                var a = int.TryParse(Vla.Text, out int Vl);
                 if (a) return Vl;
                 else
                     return null;
@@ -73,12 +74,5 @@ namespace AvaloniaApplication3
             else return null;
 
         }
-        // Find xaml textbox by name
-       
-        private void Tb(String Box, String Text)
-        {
-            this.FindControl<TextBox>(Box).Text= Text;
-        }
-        public  static string Tb(Window Win, string Box) {  return Win.FindControl<TextBox>(Box).Text;  }
-    }
+     }
 }
