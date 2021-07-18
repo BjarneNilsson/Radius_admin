@@ -11,14 +11,20 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+    <PackageReference Include="Avalonia" Version="0.10.6" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
    </ItemGroup>
   <ItemGroup>
     <Reference Include="radclientlib">
       <HintPath>..\radclientlib_s\radclientlib\bin\Release\netcoreapp3.1\radclientlib.dll</HintPath>
     </Reference>
+    <Reference Include="radclientlib">
+      <HintPath>..\RadiusClientLib\radclientlib\bin\Debug\netcoreapp3.1\radclientlib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="radclientlib" />
   </ItemGroup>
 </Project>
