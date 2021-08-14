@@ -4,75 +4,74 @@ using Avalonia.Markup.Xaml;
 using net.holmedal;
 using Avalonia.Interactivity;
 using System;
+using Radius.Models;
 
 namespace AvaloniaApplication3
 {
+
     public class MainWindow : Window
     {
-        public TextBox Username ;
-        public TextBox Password;
-        public TextBox Vlan;
+#nullable enable
         private static Client Cl;
+        private readonly UserViewModel  UVM;
 
         public MainWindow()
         {
+
             InitializeComponent();
-            Username = this.FindControl<TextBox>("TxtUsername");
-            Password = this.FindControl<TextBox>("TxtPassword");
-            Vlan = this.FindControl<TextBox>("TxtVlan");
+            DataContext = new Radius.Models.UserViewModel();
+            UVM = DataContext as UserViewModel;
             Cl = new Client("https://api.holmedal.net");
-            Cl.UserAvalable += (o, e) =>
-            {
-                if (e.Vlan.HasValue)
-                {
-                    Vlan.Text = e.Vlan.Value.ToString();
-                }
-                else
-                {
-                    Vlan.Text = "";
-                }
-                Password.Text = e.Password;
-            };
+            Cl.UserAvalable += UserAvalable;
+            
+            
 #if DEBUG
             this.AttachDevTools();
 #endif
         }
 
+       
+
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
         }
+
+        #region Event hanlers for buttons
         private void BtnFind_Click(object s, RoutedEventArgs a)
         {
-            Cl.GetUserAsync(Username.Text);
+            Cl.GetUserAsync(UVM.UserName);
         }
         private void BtnAdd_Click(object s, RoutedEventArgs a)
         {
 
-            Cl.AddUser(Username.Text, Password.Text, GetVlan(Vlan));
+            Cl.AddUser(UVM.UserName, UVM.Password, UVM.Vl);
         }
         private void BtnUpdate_Click(object s, RoutedEventArgs a)
         {
-            Cl.UpdateUser(Username.Text, Password.Text, GetVlan(Vlan));
+            Cl.UpdateUser(UVM.UserName, UVM.Password, UVM.Vl);
 
 
         }
         private void BtnDelete_Click(Object sender, RoutedEventArgs e)
         {
-            Cl.DeleteUser(Username.Text);
+            Cl.DeleteUser(UVM.UserName);
         }
-        private static int? GetVlan(TextBox Vla)
-
+    
+        #endregion
+        private void UserAvalable( object? o, UserAvalableArgs e) 
         {
-            if (Vla.Text != " ")
+            if (e.Vlan.HasValue)
             {
-                var a = int.TryParse(Vla.Text, out int Vl);
-                if (a) return Vl;
-                else
-                    return null;
+                UVM.Vlan = e.Vlan.Value.ToString();
             }
-            else return null;
-
+            else
+            {
+                UVM.Vlan = "";
+            }
+            UVM.Password = e.Password;
+            
         }
-     }
+    }
+
 }

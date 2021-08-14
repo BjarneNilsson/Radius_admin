@@ -7,17 +7,18 @@
         Title="Radius Admin">
 
   <Canvas Margin="0,5,0,0">
-      <TextBlock  Text="Username:" Margin="17,5,0,0" FontSize="16"/>
-     <TextBox x:Name="TxtUsername" Margin="100,0,0,0" Width="200"   />
+      <TextBlock Text="Username:" Margin="17,5,0,0" FontSize="16"/>
+      <TextBox Text="{Binding UserName}" Margin="100,0,0,0" Width="200"   />
       <TextBlock Text="Password:" Margin="29,40,0,0" />
-      <TextBox x:Name="TxtPassword" Margin="100,35,0,0" Width="200" />
+      <TextBox Text="{Binding Password}" Margin="100,35,0,0" Width="200" />
       <TextBlock Text="Vlan:" Margin="63,75,0,0"/>
-      <TextBox x:Name="TxtVlan" Margin="100,70,0,0" />
+      <TextBox Text="{Binding Vlan}" Margin="100,70,0,0" />
     <Canvas Margin="55,120,0,0">
       <Button Click="BtnFind_Click" Content="Find" Margin="45,0,0,0" />
-      <Button Click="BtnAdd_Click" Content="Add" />
-      <Button x:Name="yt" Click="BtnUpdate_Click" Content="Update" Margin="91,0,0,0"/>
-      <Button x:Name="aa" Click="BtnDelete_Click" Content="Derlete" Margin="158,0,0,0"/>
+      <Button Click="BtnAdd_Click" IsEnabled="{Binding IsValid}" Content="Add" />
+      <Button Click="BtnUpdate_Click" Content="Update" IsEnabled="{Binding IsValid}" Margin="91,0,0,0"/>
+      <Button Click="BtnDelete_Click"  Content="Delete" Margin="158,0,0,0"/>
   </Canvas>
+    <TextBlock Text="{Binding Message}" Margin="15,160,0,0"/>
     </Canvas>
 </Window>
